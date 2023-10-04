@@ -17,6 +17,33 @@ class Game {
   }
 
   registerEvents() {
+    let correctSymbol = this.currentSymbol.textContent;
+
+    let writtenSymbol = '';
+    let result = null;
+
+    document.addEventListener ('keyup', checkKey); 
+
+    function checkKey(event) {
+      console.log(correctSymbol);
+      writtenSymbol = event.key;
+      console.log(writtenSymbol);
+      if (correctSymbol === event.key) {
+        console.log('true');
+        result = 'true';
+      } else {
+        console.log('false');
+        result = 'false';
+      }
+      console.log(result);
+      this.success();
+    }
+
+    console.log(result);
+
+
+    //  this.fail();
+    //  this.success();
     /*
       TODO:
       Написать обработчик события, который откликается

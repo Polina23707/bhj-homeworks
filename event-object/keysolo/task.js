@@ -17,41 +17,8 @@ class Game {
   }
 
   registerEvents() {
-    let correctSymbol = this.currentSymbol.textContent;
-
-    let writtenSymbol = '';
-    let result = null;
-
+    let checkKey = (event) => (this.currentSymbol.textContent === event.key) ? this.success() : this.fail();
     document.addEventListener ('keyup', checkKey); 
-
-    function checkKey(event) {
-      console.log(correctSymbol);
-      writtenSymbol = event.key;
-      console.log(writtenSymbol);
-      if (correctSymbol === event.key) {
-        console.log('true');
-        result = 'true';
-      } else {
-        console.log('false');
-        result = 'false';
-      }
-      console.log(result);
-      this.success();
-    }
-
-    console.log(result);
-
-
-    //  this.fail();
-    //  this.success();
-    /*
-      TODO:
-      Написать обработчик события, который откликается
-      на каждый введённый символ.
-      В случае правильного ввода слова вызываем this.success()
-      При неправильном вводе символа - this.fail();
-      DOM-элемент текущего символа находится в свойстве this.currentSymbol.
-     */
   }
 
   success() {

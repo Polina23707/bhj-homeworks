@@ -1,23 +1,19 @@
-const tips = Array.from(document.querySelectorAll('.has-tooltip'));
-const tipText = [];
+const links = Array.from(document.querySelectorAll('.has-tooltip'));
 
 let createTip = (title) => {
   let tipText = `<div class="tooltip">${title}</div>`;
   return tipText;
 }
 
-tips.forEach((tip) => {
-  
-  tip.insertAdjacentHTML("beforeEnd", createTip(tip.title));
+links.forEach((link) => {
+  link.insertAdjacentHTML("afterEnd", createTip(link.title));
 
-  tip.addEventListener('click', (event) => {
+  link.addEventListener('click', (event) => {
     event.preventDefault();
 
-    if (tip.firstElementChild.classList.contains('tooltip_active')) {
-      tip.firstElementChild.classList.remove('tooltip_active');
-    } else {
-      tip.firstElementChild.classList.add('tooltip_active');
-    }
+    link.nextElementSibling.classList.toggle('tooltip_active');
+
+    link.nextElementSibling.setAttribute('style', `left: ${link.getBoundingClientRect().left}px; top: ${link.getBoundingClientRect().top + 20}px` );
   });
 })
 

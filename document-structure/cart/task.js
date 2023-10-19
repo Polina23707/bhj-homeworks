@@ -15,10 +15,12 @@ products.forEach((product) => {
 
   incline.onclick = function () {++amount.textContent}
   decline.onclick = function () {
-    amount.textContent > 0 ? --amount.textContent : amount.textContent;
+    amount.textContent > 1 ? --amount.textContent : amount.textContent;
   }
   
   addProduct.onclick = function () {
+
+    
 
     selectedProduct = addProduct.closest('.product');
     let productId = selectedProduct.getAttribute('data-id');

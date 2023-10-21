@@ -20,16 +20,13 @@ products.forEach((product) => {
   
   addProduct.onclick = function () {
 
-    
-
     selectedProduct = addProduct.closest('.product');
     let productId = selectedProduct.getAttribute('data-id');
-
     currentCart = Array.from(cartProducts.children);
+
     let cartAmount = Array.from(products[productId - 1].children)[1].textContent;
 
     if (!currentCart.map((el) => el.getAttribute('data-id')).some((el) => el === productId)) {
-
       let cartProduct = document.createElement('div');
       cartProducts.appendChild(cartProduct);
 
@@ -38,8 +35,9 @@ products.forEach((product) => {
         <div class="cart__product-count">${cartAmount}</div>
         </div>`
     } else {
-      let existingProduct = Array.from(currentCart[productId - 1].children);
-      existingProduct[1].textContent = Number(existingProduct[1].textContent) + Number(cartAmount);
+      let existingProduct = currentCart[productId - 1];
+
+      existingProduct.lastElementChild.textContent = Number(existingProduct.lastElementChild.textContent) + Number(cartAmount);
     }
   }
 })
